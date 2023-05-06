@@ -1,0 +1,342 @@
+PImage em;
+void startWinIni(){
+  
+  em=loadImage("bg/em.png");
+  em2=loadImage("bg/em2.png");
+  
+}
+
+int firstClick=0;
+int FirstDescrTime=0;
+
+void startWin(){
+
+  background(36,148,244);
+  image(em,width/2-em.width/2,height/2-em.height/2-50);
+
+  
+  btnStartBSG.x=width/2-btnStartBSG.w-5;
+  if(btnStartBSG.ButtonDraw()){mode=1;}
+
+  
+  btnStartPC.x=width/2+5;
+  if(btnStartPC.ButtonDraw()){mode=4;}
+ 
+  
+}
+
+// draw inform Screen about smartfon connection
+
+void mode1(){
+   background(36,148,244);   
+   image(jst,width/2-jst.width/2,height/2-jst.height/2-10);
+   
+  //String txt="Click Screen";
+  //String txt=str(FirstDescrTime);
+  String txt="";
+  textSize(24);
+  float txOfs=textWidth(txt);
+  fill(255,255,255,255);
+  text(txt,width/2-txOfs/2,height-50);
+  
+  txt="Use your smartphone to control this Game";
+  textSize(24);
+  txOfs=textWidth(txt);
+  fill(255,255,255,255);
+  text(txt,width/2-txOfs/2,40); 
+  
+  btnShowIDScr.x=width/2-btnShowIDScr.w/2;
+  if(btnShowIDScr.ButtonDraw()){mode=2;}
+}
+
+void mode2(){
+  background(36,148,244);
+  drawIDScreen();
+}
+
+void mode3(){
+  
+  background(36,148,244);
+  
+}
+
+void mode4(){
+  
+  background(36,148,244);
+  
+}
+
+PImage jst;
+void descriptionIni(){
+  
+  jst=loadImage("bg/jst.png");
+  
+  
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+int infoWinTime=0;
+
+void infoWin(String txt,int txSize, boolean txCenterX,boolean txCenterY){
+  //popMatrix();
+  textAlign(LEFT, CENTER);
+  fill(255,255,255,55);
+  rect(100,100,width-200,height-200,10);
+  textSize(txSize);
+  float txOfs=textWidth(txt);
+  fill(255,255,255,255);
+  text(txt,width/2-txOfs/2,height/2);
+  
+  //delay(10000);
+  if (infoWinTime<50){
+    infoWinTime++;
+    drawResultTime=0;
+  } else {
+    
+    drawResult();
+  }
+  
+}
+
+ PImage instr, pl1Ico, pl2Ico,  pl3Ico,  pl4Ico ;
+ float kParts=20, wParts, ofsParts;
+ 
+void resultIni(){
+  
+    instr=loadImage("bg/instr2.png");
+    pl1Ico=loadImage("aero/pl1.png");
+    pl2Ico=loadImage("aero/pl2.png");
+    pl3Ico=loadImage("aero/pl3.png");
+    pl4Ico=loadImage("aero/pl4.png");
+    
+     wParts=width/kParts;
+    
+}
+
+int drawResultTime;
+
+void drawResult(){
+  
+   background(36,148,244);
+   
+   color c1=color(0,0,155);
+   color c2=color(255,255,0,200); 
+
+   drawManyStripes(c1,c2,true);
+  // drawManyStripes();
+   
+   fill(255,255,255,255);
+   
+   //rect(width/2-instr.width,instr.height/2-50,width-instr.width*2,instr.height-instr.height/2);
+   //rect(width/2-instr.width*2,height/2-430/2,width-instr.width*2,430);
+   String title="Game Result";
+   
+   float ofs=textWidth(title);
+   text(title,width/2- ofs/2,30);
+   
+   title="To Be Continued ...";
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height-50);
+   
+   //rect(width/2-instr.width,height/2-430/2-10,width-instr.width/4,430,10);
+   
+   float xCord=width/2-instr.width;
+   rect(xCord,height/2-instr.height/2-10,width-xCord*2,instr.height,10);
+   
+   //fill(36,148,244,100);
+   fill(0,0,155);
+   rect(width/2-200,height/2-200-10,400,400,10);
+   
+   image(instr,width/2-instr.width,height/2-instr.height/2-10);
+   
+   //image(pl1Ico, width/2-instr.width + instr.width+20,height/2-pl1Ico.height/2);
+   ///////////////////////////////////////////////////////////////////
+   
+   if (drawResultTime>10 && drawResultTime<100){
+   
+   image(pl1Ico, width/2-pl1Ico.width/2,height/2-pl1Ico.height/2-100);
+   
+   fill(255);
+   title="Plaine 1";
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl1Ico.height/2-100-50);
+   
+   fill(255);
+   title="Gain Score "+ str(pl1Score);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl1Ico.height/2);
+   
+   fill(255);
+   title="Used Bullets "+ str(pl1bCount);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl1Ico.height/2+50);
+   
+   }
+   
+    if (drawResultTime>110 && drawResultTime<200){
+   
+      image(pl2Ico, width/2-pl2Ico.width/2,height/2-pl2Ico.height/2-100);
+   
+   fill(255);
+   title="Plaine 2";
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl2Ico.height/2-100-50);
+   
+   fill(255);
+   title="Gain Score "+ str(pl2Score);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl2Ico.height/2);
+   
+   fill(255);
+   title="Used Bullets "+ str(pl2bCount);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl2Ico.height/2+50);
+   
+   }
+   
+   if (drawResultTime>210 && drawResultTime<300){
+     image(pl3Ico, width/2-pl3Ico.width/2,height/2-pl3Ico.height/2-100);
+   
+   fill(255);
+   title="Plaine 3";
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl3Ico.height/2-100-50);
+   
+   fill(255);
+   title="Gain Score "+ str(pl3Score);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl3Ico.height/2);
+   
+   fill(255);
+   title="Used Bullets "+ str(pl3bCount);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl3Ico.height/2+50);
+   }
+   
+   if (drawResultTime>310 && drawResultTime<400){
+    image(pl4Ico, width/2-pl4Ico.width/2,height/2-pl4Ico.height/2-100);
+   
+   fill(255);
+   title="Plaine 4";
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl4Ico.height/2-100-50);
+   
+   fill(255);
+   title="Gain Score "+ str(pl4Score);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl4Ico.height/2);
+   
+   fill(255);
+   title="Used Bullets "+ str(pl4bCount);
+   ofs=textWidth(title);
+   text(title,width/2- ofs/2,height/2-pl4Ico.height/2+50);
+   }
+   
+  drawResultTime++;
+  
+  if (drawResultTime>400){  
+  drawResultTime=0;
+  showLevelTasks=false;
+  level++;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////
+
+class infoTxt{
+  
+  float x=20;
+  float y=50;
+  
+  //float mx=0;
+  float my=0;
+  
+  color cl=color(255,255,255);
+  color clRect=color(0,255,0,100);
+  String label="100";
+  int prc=100;
+  //boolean vis=false;
+  int td=0;
+  float i=0;
+  float a=0;
+  
+  void infoTxt(){
+    
+    
+  }
+  
+  void infoDraw(){
+    if (td>0){
+    textAlign(CENTER, CENTER);
+    textSize(10);
+    float ts=textWidth(label);
+    stroke(255);
+    strokeWeight(1);
+    fill(clRect);
+    rect(x-20,y-8,ts+25,18);
+    fill(cl);
+    text(label,x,y);
+    td--;
+    }
+  }
+    
+     void infoDraw2(){
+    if (td>0){
+    textAlign(CENTER, CENTER);
+    textSize(18); 
+    fill(255,255,255,255-a);     
+    //text(label,x+(a/50),y+my);
+    text(label,x,y+my);
+    my--;
+    td--;
+    if (my>20)td=0;
+    if (td<1)my=0;
+    
+    }
+    a=sin(i)*255;
+    i-=0.2;
+  
+}
+  
+  
+}
+
+/////////////////////////////////////
+////////////////////////////////////
+
+
+void drawManyStripes( color clfon, color clstr, boolean gLeft ){
+  
+   //color clfon;
+  background(clfon);
+  /*
+  for (int i=0; i<1000;i++){
+    strokeWeight(random(5));
+    stroke(255);
+    point(random(width),random(height));
+  }
+  */
+  for (int i=0; i-1<kParts/2;i++){
+    noStroke();
+    fill(255,255,0,200);
+    rect(wParts*i*2+ofsParts,0,wParts,height);
+    
+    
+  }
+  
+  if (gLeft){
+  if (ofsParts>wParts)ofsParts=-wParts;
+  ofsParts+=3;
+  }
+  if (!gLeft){
+  if (ofsParts<-1*wParts)ofsParts=wParts;
+  ofsParts-=3;
+  }
+  
+  
+}

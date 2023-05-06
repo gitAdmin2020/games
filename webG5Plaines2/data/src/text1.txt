@@ -1,0 +1,64 @@
+
+
+   if (ship1Score>ship1ScoreLimit){
+     /*
+   text("Plane 1 Score "+pl1Score,20,20);
+   text("Plane 2 Score "+pl2Score,20,40);
+   text("Plane 3 Score "+pl3Score,20,60);      
+   text("Plane 4 Score "+pl4Score,20,80);
+   
+    //text(u,20,120);
+    fill(255);
+    text("Ship 1 Score "+ship1Score,20,140);
+    */
+   }
+
+
+  //////////////// bullets Delay ///////////////////// 
+      if (pl1bCount>bulletsLimit-1){
+     pl1Delay++;
+   }
+   
+   if (pl1Delay>timeRestore){
+      pl1Delay=0;
+      pl1bCount=0;
+      
+    }
+   text(pl1Delay+" "+pl1bCount,20,height-40);
+   
+  //////////////////////////////////////////////////////
+    if (pl2bCount>bulletsLimit-1){
+     pl2Delay++;
+   }
+   
+   if (pl2Delay>timeRestore){
+      pl2Delay=0;
+      pl2bCount=0;
+      
+    }
+  
+  
+  
+  //////////////////////////////////////////////////////
+   if (pl3bCount>bulletsLimit-1){
+     pl3Delay++;
+   }
+   
+   if (pl3Delay>timeRestore){
+      pl3Delay=0;
+      pl3bCount=0;
+      
+    }
+  
+  
+  
+  //////////////////////////////////////////////////////
+      if (pl4bCount>bulletsLimit-1){
+     pl4Delay++;
+   }
+   
+   if (pl4Delay>timeRestore){
+      pl4Delay=0;
+      pl4bCount=0;
+      
+    }
